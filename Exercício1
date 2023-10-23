@@ -1,31 +1,34 @@
-class Pessoa:
-    def __init__ (self, nome, idade):
-        self.__nome = nome
-        self.__idade = idade
+class Funcionario :
+    def __init__(self, nome, dados):
+        self._nome = nome
+        self._dados = dados
 
-    @property
-    def nome(self):
-        return self.__nome
+    def getNome (self):
+        return self._nome
 
-    @property
-    def idade(self):
-        return self.__idade
+    def getDados (self):
+        return self._dados
 
-    @nome.setter
-    def nome(self, nome):
-        self.__nome = nome
+    def setNome (self, nome):
+        self._nome = nome
 
-    @idade.setter
-    def idade(self, idade):
-        self.__idade = idade
+    def setDados(self, dados):
+        self._dados = dados
 
-nome = input ('Digite seu nome:')
-idade = input ('Digite sua idade:')
+    def Contratar (self, pasta):
+        pasta = open(pasta, 'a')
+        for dados in self.getDados():
+            dados_pessoais = input(f'Digite {dados}:')
+            pasta.write(f'\n{dados_pessoais}')
+            print('')
+        pasta.close()
+    
+    def LerDados (self, pasta):
+        pasta = open(pasta, 'r')
 
-p1 = Pessoa(nome, idade)
-print(p1.nome)
-print(p1.idade)
-p1.nome = 'Lucas'
-print(p1.nome)
-p1.idade = '9'
-print(p1.idade)
+        for linha in pasta:
+            print (linha, end=' ')
+ 
+f1 = Funcionario('Jeane', ['idade', 'cpf'])
+f1.Contratar('arquivo.txt')
+f1.LerDados('arquivo.txt')
