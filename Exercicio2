@@ -1,0 +1,27 @@
+class Integrante_IFRN :
+    def __init__(self, nome):
+        self.nome = nome
+    
+    def exibirMensagem(self):
+        print('Seja bem vindo(a) ao IFRN!!')
+
+class Professor(Integrante_IFRN):
+    def __init__(self, nome):
+        super().__init__(nome)
+
+    def exibirMensagem(self):
+        print('Meus alunos são os melhores!!!')
+
+class Aluno(Integrante_IFRN):
+    def __init__(self, nome):
+        super().__init__(nome)
+
+    def exibirMensagem(self):
+        print('Vou estudar pra tirar 100 em POO!!!')
+
+integre1 = Integrante_IFRN('Túlio pertubado')
+integre1.exibirMensagem()
+prof1 = Professor('Ornã chato')
+prof1.exibirMensagem()
+aluna1 = Aluno('Vitória linda')
+aluna1.exibirMensagem()
